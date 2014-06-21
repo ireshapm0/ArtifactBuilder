@@ -1,0 +1,30 @@
+[
+  {
+    "fields": {
+      "label": {
+        "type": "input",
+        "label": "Label Text",
+        "value": "Multiple Checkboxes"
+      },
+      "checkboxes": {
+        "type": "textarea-split",
+        "label": "Checkboxes",
+        "value": [
+          "Option one",
+          "Option two"
+        ]
+      },
+      "required": {
+        "type": "checkbox",
+        "label": "Required",
+        "value": false
+      },
+      "name": {
+        "type": "input",
+        "label": "Group Name",
+        "value": "checkboxes"
+      }
+    },
+    "title": "Multiple Checkboxes"
+  }
+]

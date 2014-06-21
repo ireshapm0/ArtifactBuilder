@@ -1,0 +1,20 @@
+-
+  title  : Multiple Checkboxes
+  fields : 
+    name:
+      label  : Group Name
+      type   : input
+      value  : checkboxes
+    label:
+      label  : Label Text
+      type   : input
+      value  : Multiple Checkboxes
+    required:
+      label  : Required
+      type   : checkbox
+      value  : false
+    checkboxes:
+      label  : Checkboxes
+      type   : textarea-split
+      value  : ["Option one", "Option two"]
+

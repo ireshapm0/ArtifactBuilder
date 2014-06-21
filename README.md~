@@ -1,0 +1,11 @@
+ArtifactBuilder
+===============
+
+Jaggery App to create a WSO2 Greg RXT artifact
+
+/home/iresha/Downloads/ArtifactBuilder/assets
+/home/iresha/Downloads/ArtifactBuilder/target
+/home/iresha/Downloads/ArtifactBuilder/index.jag
+/home/iresha/Downloads/ArtifactBuilder/jaggery.conf
+/home/iresha/Downloads/ArtifactBuilder/pom.xml
+/home/iresha/Downloads/ArtifactBuilder/zip-descriptor.xml
