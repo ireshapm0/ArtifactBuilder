@@ -18,7 +18,9 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
 </head>
 
 <body>
@@ -28,7 +30,7 @@
             <a class="brand" href="#">Add New Artifact</a>
             <ul class="nav">
                 <!--<li class="active"><a href="#"></a></li>-->
-                <li><a href="#artifactType">Artifact Details</a></li>
+                <li><a href="#basic">Artifact Details</a></li>
                 <li><a href="#content">Form Content</a></li>
                 <li><a href="#ui">List UI</a></li>
                 <li><a href="#relationships">Relationships</a></li>
@@ -38,11 +40,9 @@
 </div>
 
 <div class="container">
-<!--</div>-->
-
 
 <!-- Building Form. -->
-<section id="artifactType">
+<section id="basic">
 <div class="well well-large">
 <div class="clearfix">
     <h3>Artifact Details</h3>
@@ -60,7 +60,7 @@
 
 
                     <input type="hidden" name="overview_type" value="admin"> <input
-                        id="overview_type" type="text"
+                        id="artifactType_type" type="text"
                         value="application/vnd.wso2-application+xml"
                         class="span10 fm-managed"
                         data-use-plugins="RequiredField,TextFieldValueExtractor"
@@ -82,7 +82,7 @@
 
 
                     <input type="hidden" name="overview_shortName" value="admin"> <input
-                        id="overview_shortName" type="text" value="applications"
+                        id="artifactType_shortName" type="text" value="applications"
                         class="span10"
                         data-use-plugins="RequiredField,TextFieldValueExtractor"
                         data-ready-only="" data-required="true" required="required"><span
@@ -103,7 +103,7 @@
 
 
                     <input type="hidden" name="overview_singularLabel"
-                           value="admin"> <input id="overview_singularLabel" type="text"
+                           value="admin"> <input id="artifactType_singularLabel" type="text"
                                                  value="Enterprise Application"
                                                  class="span10 fm-managed"
                                                  data-use-plugins="RequiredField,TextFieldValueExtractor"
@@ -127,7 +127,7 @@
                     <div class="controls">
 
 
-                        <input id="overview_pluralLabel" name="overview_pluralLabel"
+                        <input id="artifactType_pluralLabel" name="overview_pluralLabel"
                                type="text" value="Enterprise Applications"
                                class="span10 fm-managed"
                                data-use-plugins="RequiredField,TextFieldValueExtractor"
@@ -148,7 +148,7 @@
                     <div class="controls">
 
 
-                        <select id="overview_hasNamespace"
+                        <select id="artifactType_hasNamespace"
                                 class="span10 selectpicker fm-managed"
                                 name="overview_hasNamespace"
                                 data-use-plugins="TextFieldValueExtractor">
@@ -173,7 +173,7 @@
                     <div class="controls">
 
 
-                        <input id=" overview_iconset" name="overview_iconset"
+                        <input id="artifactType_iconset" name="overview_iconset"
                                type="text" value="9" class="span10 fm-managed"
                                data-use-plugins="RequiredField,TextFieldValueExtractor"
                                data-ready-only="" data-required="true" required="required"><span
@@ -202,7 +202,7 @@
             <div class="controls">
 
 
-                <input id="overview_storagePath" name="overview_storagePath"
+                <input id="basic_storagePath" name="overview_storagePath"
                        type="text" value="/applications/@{name}"
                        class="span2 fm-managed"
                        data-use-plugins="RequiredField,TextFieldValueExtractor"
@@ -222,7 +222,7 @@
                 <div class="controls">
 
 
-                    <input id="overview_nameAttribute" name="overview_nameAttribute"
+                    <input id="basic_nameAttribute" name="overview_nameAttribute"
                            type="text" value="overview_name" class="span2 fm-managed"
                            data-use-plugins="RequiredField,TextFieldValueExtractor"
                            data-ready-only="" data-required="">
@@ -242,7 +242,7 @@
                 <div class="controls">
 
 
-                    <input id="overview_nameSpaceAttribute"
+                    <input id="basic_nameSpaceAttribute"
                            name="overview_nameSpaceAttribute" type="text" value=""
                            class="span2 fm-managed"
                            data-use-plugins="RequiredField,TextFieldValueExtractor"
@@ -263,7 +263,7 @@
                 <div class="controls">
 
 
-                    <input id="overview_lifecycle" name="overview_lifecycle"
+                    <input id="basic_lifecycle" name="overview_lifecycle"
                            type="text" value="" class="span2 fm-managed"
                            data-use-plugins="RequiredField,TextFieldValueExtractor"
                            data-ready-only="" data-required="">
@@ -342,17 +342,17 @@
                                 1
                             </td>
                             <td>
-                                <select name="name0">
+                                <select id="ui_type0" name="ui_type0">
                                     <option>path</option>
                                     <option>text</option>
                                 </select>
                                 <!--<input type="text" name='name0'  placeholder='path' class="form-control"/>-->
                             </td>
                             <td>
-                                <input type="text" name='mail0' placeholder='overview_name' class="form-control"/>
+                                <input type="text" id="ui_name0" name='ui_name0' placeholder='overview_name' class="form-control"/>
                             </td>
                             <td>
-                                <input type="text" name='mobile0' placeholder='/applications/@{name}' class="form-control"/>
+                                <input type="text" id="ui_href0" name='ui_href0' placeholder='/applications/@{name}' class="form-control"/>
                             </td>
                         </tr>
                         <tr id='addr1'></tr>
@@ -381,15 +381,20 @@
     </div>
 </div>
 
+</div>
+<!-- / Components -->
+
+
 </div> <!-- /container -->
        <!--script data-main="assets/js/main-built.js" src="assets/js/lib/require.js" ></script-->
 <script src="assets/js/lib/require.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="xml-gen.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         var i=1;
         $("#add_row").click(function(){
-            $('#addr'+i).html("<td>"+ (i+1) +"</td><td><select name='name"+i+"'><option>path</option> <option>text</option></select> </td><td><input  name='mail"+i+"' type='text' placeholder='Name'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='href'  class='form-control input-md'></td>");
+            $('#addr'+i).html("<td>"+ (i+1) +"</td><td><select id='ui_type"+i+"' name='ui_type"+i+"'><option>path</option> <option>text</option></select> </td><td><input id='ui_name"+i+"' name='ui_name"+i+"' type='text' placeholder='Name'  class='form-control input-md'></td><td><input id='ui_href0"+i+"' name='ui_href"+i+"' type='text' placeholder='href'  class='form-control input-md'></td>");
 
             $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
             i++;
@@ -404,6 +409,6 @@
     });	</script>
 </body>
 <%
-
 %>
 </html>
+
