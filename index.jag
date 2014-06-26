@@ -27,13 +27,17 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="#">Add New Artifact</a>
+            <a href class="brand" href="#">Add New Artifact</a>
             <ul class="nav">
                 <!--<li class="active"><a href="#"></a></li>-->
-                <li><a href="#basic">Artifact Details</a></li>
+                <li><a href="#basic" data-toggle="collapse" data-target="#collapseOne">Artifact
+                                                                                       Details</a>
+                </li>
                 <li><a href="#content">Form Content</a></li>
-                <li><a href="#ui">List UI</a></li>
-                <li><a href="#relationships">Relationships</a></li>
+                <li><a href="#ui" data-toggle="collapse" data-target="#collapseThree">List UI</a>
+                </li>
+                <li><a href="#relationships" data-toggle="collapse" data-target="#collapseFour">Relationships</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -41,12 +45,21 @@
 
 <div class="container">
 
-<!-- Building Form. -->
+<div class="accordion" id="accordion2">
+<div class="accordion-group">
+<div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"
+       href="#collapseOne">
+        + Artifact Details
+    </a>
+</div>
+<div id="collapseOne" class="accordion-body collapse">
+<div class="accordion-inner">
 <section id="basic">
-<div class="well well-large">
 <div class="clearfix">
     <h3>Artifact Details</h3>
 
+    <!--ROW 1-->
     <div class="row-fluid">
         <div class="span4">
             <div class="control-group">
@@ -114,83 +127,84 @@
                 </div>
             </div>
         </div>
-      </div>
-        <div class="row-fluid">
-            <div class="span4">
-                <div class="control-group">
-
-                    <!--Support for unbounded tables-->
-
-                    <b><label class="control-label">Plural Label :</label> </b>
-
-
-                    <div class="controls">
-
-
-                        <input id="artifactType_pluralLabel" name="overview_pluralLabel"
-                               type="text" value="Enterprise Applications"
-                               class="span10 fm-managed"
-                               data-use-plugins="RequiredField,TextFieldValueExtractor"
-                               data-ready-only="" data-required="true" required="required"><span
-                            class="label-required">*</span>
-
-                    </div>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="control-group">
-
-                    <!--Support for unbounded tables-->
-
-                    <b><label class="control-label">Has Namespace :</label> </b>
-
-
-                    <div class="controls">
-
-
-                        <select id="artifactType_hasNamespace"
-                                class="span10 selectpicker fm-managed"
-                                name="overview_hasNamespace"
-                                data-use-plugins="TextFieldValueExtractor">
-
-                            <option>false</option>
-
-                            <option>true</option>
-
-                        </select>
-
-                    </div>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="control-group">
-
-                    <!--Support for unbounded tables-->
-
-                    <b><label class="control-label">Iconset :</label> </b>
-
-
-                    <div class="controls">
-
-
-                        <input id="artifactType_iconset" name="overview_iconset"
-                               type="text" value="9" class="span10 fm-managed"
-                               data-use-plugins="RequiredField,TextFieldValueExtractor"
-                               data-ready-only="" data-required="true" required="required"><span
-                            class="label-required">*</span>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    <!-- end of Row 2-->
     </div>
+    <!--ROW 2-->
+    <div class="row-fluid">
+        <div class="span4">
+            <div class="control-group">
+
+                <!--Support for unbounded tables-->
+
+                <b><label class="control-label">Plural Label :</label> </b>
+
+
+                <div class="controls">
+
+
+                    <input id="artifactType_pluralLabel" name="overview_pluralLabel"
+                           type="text" value="Enterprise Applications"
+                           class="span10 fm-managed"
+                           data-use-plugins="RequiredField,TextFieldValueExtractor"
+                           data-ready-only="" data-required="true" required="required"><span
+                        class="label-required">*</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="span4">
+            <div class="control-group">
+
+                <!--Support for unbounded tables-->
+
+                <b><label class="control-label">Has Namespace :</label> </b>
+
+
+                <div class="controls">
+
+
+                    <select id="artifactType_hasNamespace"
+                            class="span10 selectpicker fm-managed"
+                            name="overview_hasNamespace"
+                            data-use-plugins="TextFieldValueExtractor">
+
+                        <option>false</option>
+
+                        <option>true</option>
+
+                    </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="span4">
+            <div class="control-group">
+
+                <!--Support for unbounded tables-->
+
+                <b><label class="control-label">Iconset :</label> </b>
+
+
+                <div class="controls">
+
+
+                    <input id="artifactType_iconset" name="overview_iconset"
+                           type="text" value="9" class="span10 fm-managed"
+                           data-use-plugins="RequiredField,TextFieldValueExtractor"
+                           data-ready-only="" data-required="true" required="required"><span
+                        class="label-required">*</span>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- end of Row 2-->
+</div>
 
 <hr/>
 <!--Mandatory fields-->
 
-
+<!--ROW 3-->
 <div class="row clearfix">
     <div class="span3">
         <div class="control-group">
@@ -210,76 +224,79 @@
 
             </div>
         </div>
-      </div>
-        <div class="span3">
-            <div class="control-group">
+    </div>
+    <div class="span3">
+        <div class="control-group">
 
-                <!--Support for unbounded tables-->
+            <!--Support for unbounded tables-->
 
-                <b><label class="control-label">Name Attribute :</label> </b>
-
-
-                <div class="controls">
+            <b><label class="control-label">Name Attribute :</label> </b>
 
 
-                    <input id="basic_nameAttribute" name="overview_nameAttribute"
-                           type="text" value="overview_name" class="span2 fm-managed"
-                           data-use-plugins="RequiredField,TextFieldValueExtractor"
-                           data-ready-only="" data-required="">
-
-                </div>
-            </div>
-
-        </div>
-        <div class="span3">
-            <div class="control-group">
-
-                <!--Support for unbounded tables-->
-
-                <b><label class="control-label">Namespace Attribute :</label> </b>
+            <div class="controls">
 
 
-                <div class="controls">
+                <input id="basic_nameAttribute" name="overview_nameAttribute"
+                       type="text" value="overview_name" class="span2 fm-managed"
+                       data-use-plugins="RequiredField,TextFieldValueExtractor"
+                       data-ready-only="" data-required="">
 
-
-                    <input id="basic_nameSpaceAttribute"
-                           name="overview_nameSpaceAttribute" type="text" value=""
-                           class="span2 fm-managed"
-                           data-use-plugins="RequiredField,TextFieldValueExtractor"
-                           data-ready-only="" data-required="">
-
-                </div>
             </div>
         </div>
-        <div class="span2">
 
-            <div class="control-group">
+    </div>
+    <div class="span3">
+        <div class="control-group">
 
-                <!--Support for unbounded tables-->
+            <!--Support for unbounded tables-->
 
-                <b><label class="control-label">Lifecycle :</label> </b>
-
-
-                <div class="controls">
+            <b><label class="control-label">Namespace Attribute :</label> </b>
 
 
-                    <input id="basic_lifecycle" name="overview_lifecycle"
-                           type="text" value="" class="span2 fm-managed"
-                           data-use-plugins="RequiredField,TextFieldValueExtractor"
-                           data-ready-only="" data-required="">
+            <div class="controls">
 
-                </div>
+
+                <input id="basic_nameSpaceAttribute"
+                       name="overview_nameSpaceAttribute" type="text" value=""
+                       class="span2 fm-managed"
+                       data-use-plugins="RequiredField,TextFieldValueExtractor"
+                       data-ready-only="" data-required="">
+
             </div>
         </div>
     </div>
+    <div class="span2">
+
+        <div class="control-group">
+
+            <!--Support for unbounded tables-->
+
+            <b><label class="control-label">Lifecycle :</label> </b>
+
+
+            <div class="controls">
+
+
+                <input id="basic_lifecycle" name="overview_lifecycle"
+                       type="text" value="" class="span2 fm-managed"
+                       data-use-plugins="RequiredField,TextFieldValueExtractor"
+                       data-ready-only="" data-required="">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+</div>
+</div>
+</div>
 
 
 </div>
-</section>
-
-<div class="clearfix"></div>
 <section id="content">
-    <h3>Form Content</h3>
+    <h3>Content</h3>
+
     <div class="row clearfix">
         <div class="span6">
             <div class="clearfix">
@@ -309,69 +326,166 @@
         </div>
     </div>
 </section>
-<div class="clearfix"></div>
-<section id="ui">
-    <div class="well well-large">
-    <div class="clearfix"></div>
-    <!--<div class="well well-large">-->
-        <h3>List UI</h3>
-    <br />
-        <div class="container">
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <table class="span11 table table-bordered table-hover" id="tab_logic">
-                        <thead>
-                        <tr >
-                            <th class="text-center">
-                                #
-                            </th>
-                            <th class="text-center">
-                                Type
-                            </th>
-                            <th class="text-center">
-                                Value
-                            </th>
-                            <th class="text-center">
-                                href
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr id='addr0'>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                <select id="ui_type0" name="ui_type0">
-                                    <option>path</option>
-                                    <option>text</option>
-                                </select>
-                                <!--<input type="text" name='name0'  placeholder='path' class="form-control"/>-->
-                            </td>
-                            <td>
-                                <input type="text" id="ui_name0" name='ui_name0' placeholder='overview_name' class="form-control"/>
-                            </td>
-                            <td>
-                                <input type="text" id="ui_href0" name='ui_href0' placeholder='/applications/@{name}' class="form-control"/>
-                            </td>
-                        </tr>
-                        <tr id='addr1'></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!--<div class="span11">-->
-            <a id="add_row" class="btn btn-default pull-left">Add Row</a>
-            <div class="span10">
-            <a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
-            </div>
-        </div>
-        </div>
-    <!--</div>-->
-</section>
-<hr />
-<div class="clearfix"></div>
 
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"
+           href="#collapseThree">
+            + List UI
+        </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+        <div class="accordion-inner">
+            <section id="ui">
+                <div class="clearfix"></div>
+                <div class="well well-large">
+                    <h3>List UI</h3>
+                    <br/>
+
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">
+                                <table class="span11 table table-bordered table-hover"
+                                       id="tab_logic">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            #
+                                        </th>
+                                        <th class="text-center">
+                                            Type
+                                        </th>
+                                        <th class="text-center">
+                                            Value
+                                        </th>
+                                        <th class="text-center">
+                                            href
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id='addr0'>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            <select id="ui_type0" name="ui_type0">
+                                                <option>path</option>
+                                                <option>text</option>
+                                            </select>
+                                            <!--<input type="text" name='name0'  placeholder='path' class="form-control"/>-->
+                                        </td>
+                                        <td>
+                                            <input type="text" id="ui_name0" name='ui_name0'
+                                                   placeholder='overview_name'
+                                                   class="form-control"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="ui_href0" name='ui_href0'
+                                                   placeholder='/applications/@{name}'
+                                                   class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr id='addr1'></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--<div class="span11">-->
+                        <a id="add_row" class="btn btn-default pull-left">Add Row</a>
+
+                        <div class="span10">
+                            <a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            .
+        </div>
+    </div>
+</div>
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"
+           href="#collapseFour">
+            + Relationships
+        </a>
+    </div>
+    <div id="collapseFour" class="accordion-body collapse">
+        <div class="accordion-inner">
+            <section id="relationships">
+                <div class="clearfix"></div>
+                <div class="well well-large">
+                    <h3>Relationships</h3>
+                    <br/>
+
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">
+                                <table class="span11 table table-bordered table-hover"
+                                       id="tab_logic_2">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            #
+                                        </th>
+                                        <th class="text-center">
+                                            Relationship
+                                        </th>
+                                        <th class="text-center">
+                                            Type
+                                        </th>
+                                        <th class="text-center">
+                                            Source/Target
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id='relationships_addr0'>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            <select id="relationships_type0"
+                                                    name="relationships_type0">
+                                                <option>Association</option>
+                                                <option>Dependency</option>
+                                            </select>
+                                            <!--<input type="text" name='name0'  placeholder='path' class="form-control"/>-->
+                                        </td>
+                                        <td>
+                                            <input type="text" id="relationships_name0"
+                                                   name='relationships_name0'
+                                                   placeholder=''
+                                                   class="form-control"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="relationships_href0"
+                                                   name='relationships_href0'
+                                                   placeholder=''
+                                                   class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr id='relationships_addr1'></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--<div class="span11">-->
+                        <a id="add_row_2" class="btn btn-default pull-left">Add Row</a>
+
+                        <div class="span10">
+                            <a id='delete_row_2' class="pull-right btn btn-default">Delete Row</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="clearfix"></div>
 <div class="component"><!-- Button (Double) -->
     <div class="control-group pull-right">
         <div class="controls">
@@ -379,34 +493,52 @@
             <button id="button2id" name="button2id" class="btn">Cancel</button>
         </div>
     </div>
-</div>
+                       <!-- / Components -->
 
 </div>
-<!-- / Components -->
-
-
-</div> <!-- /container -->
-       <!--script data-main="assets/js/main-built.js" src="assets/js/lib/require.js" ></script-->
+</div>
+<!-- /container -->
+<!--script data-main="assets/js/main-built.js" src="assets/js/lib/require.js" ></script-->
 <script src="assets/js/lib/require.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="xml-gen.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        var i=1;
-        $("#add_row").click(function(){
-            $('#addr'+i).html("<td>"+ (i+1) +"</td><td><select id='ui_type"+i+"' name='ui_type"+i+"'><option>path</option> <option>text</option></select> </td><td><input id='ui_name"+i+"' name='ui_name"+i+"' type='text' placeholder='Name'  class='form-control input-md'></td><td><input id='ui_href0"+i+"' name='ui_href"+i+"' type='text' placeholder='href'  class='form-control input-md'></td>");
+    $(document).ready(function () {
+        var i = 1;
+        $("#add_row").click(function () {
+            $('#addr' + i).html("<td>" + (i + 1) + "</td><td><select id='ui_type" + i + "' name='ui_type" + i + "'><option>path</option> <option>text</option></select> </td><td><input id='ui_name" + i + "' name='ui_name" + i + "' type='text' placeholder='Name'  class='form-control input-md'></td><td><input id='ui_href0" + i + "' name='ui_href" + i + "' type='text' placeholder='href'  class='form-control input-md'></td>");
 
-            $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+            $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
             i++;
         });
-        $("#delete_row").click(function(){
-            if(i>1){
-                $("#addr"+(i-1)).html('');
+        $("#delete_row").click(function () {
+            if (i > 1) {
+                $("#addr" + (i - 1)).html('');
                 i--;
             }
         });
 
-    });	</script>
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var i = 1;
+        $("#add_row_2").click(function () {
+            $('#relationships_addr' + i).html("<td>" + (i + 1) + "</td><td><select id='relationships_type" + i + "' name='relationships_type" + i + "'><option>Association</option> <option>Dependancy</option></select> </td><td><input id='relationships_name" + i + "' name='relationships_name" + i + "' type='text' placeholder='Name'  class='form-control input-md'></td><td><input id='relationships_href0" + i + "' name='relationships_href" + i + "' type='text' placeholder='href'  class='form-control input-md'></td>");
+
+            $('#tab_logic_2').append('<tr id="relationships_addr' + (i + 1) + '"></tr>');
+            i++;
+        });
+        $("#delete_row_2").click(function () {
+            if (i > 1) {
+                $("#relationships_addr" + (i - 1)).html('');
+                i--;
+            }
+        });
+
+    });
+</script>
 </body>
 <%
 %>
