@@ -1,7 +1,18 @@
 $(document).ready(function () {
     $('#button1id').click(function () {
         if (validateInput()) {
-            JSONObjectToString();
+//            JSONObjectToString();
+            $.post( "ws-rxt.jag", {rxt:JSONObjectToString()} )
+                    .done(function( data ) {
+                if(data=="true"){
+                    alert("RXT Successfully Added.");
+                }
+                else{
+                    alert("There's a Problem adding the RXT Configuration.");
+
+                }
+			    //console.log( "Data Received: " + data );
+         });
         }
     });
 });
@@ -13,13 +24,13 @@ function validateInput() {
     var singularLabel = document.getElementById("artifactType_singularLabel").value;
     var pluralLabel = document.getElementById("artifactType_pluralLabel").value;
     var hasNamespace = document.getElementById("artifactType_hasNamespace").value;
-    var iconset = document.getElementById("artifactType_iconset").value;
+    var iconSet = document.getElementById("artifactType_iconset").value;
     var storagePath = document.getElementById("basic_storagePath").value;
     var nameAttribute = document.getElementById("basic_nameAttribute").value;
-    var nameSpaceAttribute = document.getElementById("basic_nameSpaceAttribute").value;
+    var namespaceAttribute = document.getElementById("basic_nameSpaceAttribute").value;
     var lifecycle = document.getElementById("basic_lifecycle").value;
 
-    if (type == "" || shortName == "" || singularLabel == "" || pluralLabel == "" || hasNamespace == "" || iconset == "" || storagePath == "") {
+    if (type == "" || shortName == "" || singularLabel == "" || pluralLabel == "" || hasNamespace == "" || iconSet == "" || storagePath == "") {
         alert("Please fill all mandatory fields..");
         return;
     }
@@ -34,10 +45,10 @@ function getBasicJsonElements() {
     artifactType["singularLabel"] = document.getElementById("artifactType_singularLabel").value;
     artifactType["pluralLabel"] = document.getElementById("artifactType_pluralLabel").value;
     artifactType["hasNamespace"] = document.getElementById("artifactType_hasNamespace").value;
-    artifactType["iconset"] = document.getElementById("artifactType_iconset").value;
+    artifactType["iconSet"] = document.getElementById("artifactType_iconset").value;
     artifactType["storagePath"] = document.getElementById("basic_storagePath").value;
     artifactType["nameAttribute"] = document.getElementById("basic_nameAttribute").value;
-    artifactType["nameSpaceAttribute"] = document.getElementById("basic_nameSpaceAttribute").value;
+    artifactType["namespaceAttribute"] = document.getElementById("basic_nameSpaceAttribute").value;
     artifactType["lifecycle"] = document.getElementById("basic_lifecycle").value;
 
     return artifactType;
@@ -64,7 +75,9 @@ function getUI() {
             columns["type"] = type;
             columns["value"] = value;
             columns["href"] = href;
-            list.push(columns);
+            if(value){
+                list.push(columns);
+            }
         }
     }
     return list;
@@ -90,7 +103,9 @@ function getRelationships() {
             columns["relationship"] = relationship;
             columns["type"] = type;
             columns["source/target"] = source_target;
-            list.push(columns);
+            if(type && source_target){
+                list.push(columns);
+            }
         }
     }
     return list;
@@ -101,10 +116,18 @@ function getContent() {
 
     var contentFields = document.getElementById("target").getElementsByTagName("div");
     var allFields = [];
+    var tableName;
 
     for (var i = 0; i < contentFields.length; i++) {
 
-        if (contentFields[i].getAttribute("data-title") == "Text Input") {
+        if (contentFields[i].getAttribute("data-title") == "Form Name") {
+            var d = document.createElement('div');
+            d.innerHTML = contentFields[i].getAttribute("data-content");
+            var nodes = d.getElementsByTagName("input");
+            tableName = nodes[0].getAttribute("value");
+
+        }
+        else if (contentFields[i].getAttribute("data-title") == "Text Input") {
             var fields = {};
             fields['type'] = 'text';
             var d = document.createElement('div');
@@ -240,11 +263,18 @@ function getContent() {
         }
 
     }
-    return allFields;
+    if(allFields.length==0){
+        alert("Form Content Cannot be empty.");
+        return;
+    }
+    var content = {};
+    content[tableName] =  allFields;
+    return content;
 }
 
 function JSONObjectToString() {
     var json = { "artifactType": getBasicJsonElements(), "content": getContent(), "ui": getUI(), "relationships": getRelationships()}
     console.log(JSON.stringify(json));
-    alert(JSON.stringify(json));
+    //alert(JSON.stringify(json));
+    return JSON.stringify(json);
 }

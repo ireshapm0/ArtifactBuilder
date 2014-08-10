@@ -502,6 +502,25 @@
 <script src="assets/js/lib/require.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="json-gen.js"></script>
+<!--<script src="ws-rxt.jag"></script>-->
+<!--<script type="text/javascript">-->
+<!--$(document).ready(function () {-->
+    <!--$('#button1id').click(function () {-->
+        <!--if (validateInput()) {-->
+            <!--JSONObjectToString();-->
+          <!--$.ajax({-->
+           <!--url: 'http://10.113.16.25:9763/ws-rxt.jag',-->
+           <!--type: 'POST',-->
+           <!--data: {-->
+               <!--rxt: $('hi').val()-->
+
+           <!--}-->
+       <!--});-->
+        <!--}-->
+
+    <!--});-->
+<!--});-->
+<!--</script>-->
 <script type="text/javascript">
     $(document).ready(function () {
         var i = 1;
@@ -525,7 +544,7 @@
     $(document).ready(function () {
         var i = 1;
         $("#add_row_2").click(function () {
-            $('#relationships_addr' + i).html("<td>" + (i + 1) + "</td><td><select id='relationships_type" + i + "' name='relationships_type" + i + "'><option>Association</option> <option>Dependancy</option></select> </td><td><input id='relationships_name" + i + "' name='relationships_name" + i + "' type='text' placeholder='Name'  class='form-control input-md'></td><td><input id='relationships_href0" + i + "' name='relationships_href" + i + "' type='text' placeholder='href'  class='form-control input-md'></td>");
+            $('#relationships_addr' + i).html("<td>" + (i + 1) + "</td><td><select id='relationships_type" + i + "' name='relationships_type" + i + "'><option>Association</option> <option>Dependency</option></select> </td><td><input id='relationships_name" + i + "' name='relationships_name" + i + "' type='text' placeholder='Name'  class='form-control input-md'></td><td><input id='relationships_href0" + i + "' name='relationships_href" + i + "' type='text' placeholder='href'  class='form-control input-md'></td>");
 
             $('#tab_logic_2').append('<tr id="relationships_addr' + (i + 1) + '"></tr>');
             i++;
@@ -539,8 +558,33 @@
 
     });
 </script>
-</body>
 <%
+function invokeGetVersion() {
+	var log = new Log();
+	var ws = require('ws');
+
+	var version = new ws.WSRequest();
+	var options = new Array();
+	options.useSOAP = 1.1;
+	//options.useWSA = 1.0;
+	options.action = "urn:addRXTResource";
+	var rxtname = "uri";
+	var payload = '<ser:addRXTResource xmlns:ser="http://services.generic.governance.carbon.wso2.org"> <ser:rxtConfig>&lt;artifactType type=&quot;application/vnd.wso2-person+xml&quot; shortName=&quot;person&quot; singularLabel=&quot;Person&quot; pluralLabel=&quot;People&quot; hasNamespace=&quot;false&quot; iconSet=&quot;18&quot;&gt; &lt;storagePath&gt;/people/@{name}&lt;/storagePath&gt; &lt;nameAttribute&gt;overview_id&lt;/nameAttribute&gt; &lt;ui&gt; &lt;list&gt; &lt;column name=&quot;ID&quot;&gt; &lt;data type=&quot;path&quot; value=&quot;overview_id&quot; href=&quot;@{storagePath}&quot;/&gt; &lt;/column&gt; &lt;column name=&quot;Name&quot;&gt; &lt;data type=&quot;path&quot; value=&quot;overview_name&quot; href=&quot;@{storagePath}&quot;/&gt; &lt;/column&gt; &lt;/list&gt; &lt;/ui&gt; &lt;content&gt; &lt;table name=&quot;Overview&quot;&gt; &lt;field type=&quot;options&quot;&gt; &lt;name label=&quot;title&quot;&gt;Title&lt;/name&gt; &lt;values&gt; &lt;value&gt;Mr.&lt;/value&gt; &lt;value&gt;Ms.&lt;/value&gt; &lt;/values&gt; &lt;/field&gt; &lt;field type=&quot;text&quot; required=&quot;true&quot;&gt; &lt;name&gt;ID&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot; required=&quot;true&quot;&gt; &lt;name&gt;Name&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot; url=&quot;true&quot;&gt; &lt;name&gt;Website&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text-area&quot;&gt; &lt;name&gt;Description&lt;/name&gt; &lt;/field&gt; &lt;/table&gt; &lt;table name=&quot;Contact Details&quot;&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;Address 1&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;Address 2&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;City&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;State&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;Zip&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;Country&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;Phone&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;Fax&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot;&gt; &lt;name&gt;Email&lt;/name&gt; &lt;/field&gt; &lt;/table&gt; &lt;table name=&quot;External Links&quot; columns=&quot;3&quot;&gt; &lt;subheading&gt; &lt;heading&gt;URL&lt;/heading&gt; &lt;/subheading&gt; &lt;field type=&quot;text&quot; url=&quot;true&quot;&gt; &lt;name&gt;URL&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot; url=&quot;true&quot;&gt; &lt;name&gt;URL1&lt;/name&gt; &lt;/field&gt; &lt;field type=&quot;text&quot; url=&quot;true&quot;&gt; &lt;name&gt;URL2&lt;/name&gt; &lt;/field&gt; &lt;/table&gt; &lt;table name=&quot;Comments&quot;&gt; &lt;field type=&quot;text-area&quot;&gt; &lt;name&gt;Comments&lt;/name&gt; &lt;/field&gt; &lt;/table&gt; &lt;/content&gt; &lt;/artifactType&gt;</ser:rxtConfig> </ser:addRXTResource>';
+	var result;
+
+	try {
+		version.open(options, "https://localhost:9443/services/ManageGenericArtifactService", false, "admin", "admin");
+		version.send(payload);
+		result = version.responseE4X;
+	} catch (e) {
+		log.error(e.toString());
+		return e.toString();
+	}
+	return result;
+}
+
+//print(invokeGetVersion());
 %>
+</body>
 </html>
 
